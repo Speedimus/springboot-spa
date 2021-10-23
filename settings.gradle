@@ -1,1 +1,3 @@
+include 'front-end'
+
 rootProject.name = 'springboot-spa'
