@@ -1,12 +1,10 @@
 plugins {
-    id "com.moowork.node" version "1.2.0"
+    id "com.github.node-gradle.node" version "3.1.1"
 }
-
 apply plugin:'base'
-apply plugin: "com.moowork.node"
 
 node {
-    version = '10.15.0'
+    version = '16.2.0'
     download = true
     workDir = file("${project.buildDir}/node")
     nodeModulesDir = file("${project.projectDir}")
