@@ -22,11 +22,17 @@ test {
 }
 
 jar {
-	from('front-end/dist'){
-		// Public is exposed by springboot by default
-		into 'public'
+	from('front-end/build'){
+		into 'static'
+	}
+}
+
+bootJar {
+	from('front-end/build'){
+		into 'BOOT-INF/classes/static'
 	}
 }
 
 // frontend:build will be run before processResources()
 processResources.dependsOn('front-end:bundle')
+clean.dependsOn('front-end:clean')

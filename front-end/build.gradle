@@ -6,8 +6,6 @@ apply plugin:'base'
 node {
     version = '16.2.0'
     download = true
-    workDir = file("${project.buildDir}/node")
-    nodeModulesDir = file("${project.projectDir}")
 }
 
 task bundle(type: NpmTask, dependsOn: npmInstall) {
