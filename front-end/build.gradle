@@ -8,8 +8,11 @@ node {
     download = true
 }
 
+// adds a bundle task that will execute 'npm run build'
+// 'npm run build' runs a script named 'build' that is provided by the 'react-scripts' package
 task bundle(type: NpmTask, dependsOn: npmInstall) {
     args = ['run', 'build']
 }
 
+// makes the assemble task depend on running the 'bundle' custom task we created above
 assemble.dependsOn(bundle)

@@ -21,6 +21,9 @@ test {
 	useJUnitPlatform()
 }
 
+// standard stuff above, custom stuff to deal with react app below
+// custom stuff to copy the output of the front-end build output into the static folders
+// so springboot can host it as static content with default springboot-web config
 jar {
 	from('front-end/build'){
 		into 'static'
@@ -33,6 +36,8 @@ bootJar {
 	}
 }
 
-// frontend:build will be run before processResources()
+// when this script runs, it'll first call the 'bundle' custom task in the 'front-end' script
 processResources.dependsOn('front-end:bundle')
+
+// if we call this main script's 'clean' task, it'll first call the front-end's 'clean' task
 clean.dependsOn('front-end:clean')
